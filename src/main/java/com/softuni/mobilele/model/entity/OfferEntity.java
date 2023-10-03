@@ -5,12 +5,18 @@ import com.softuni.mobilele.model.enums.TransmissionEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.JdbcTypeCode;
 
 import java.math.BigDecimal;
+import java.sql.Types;
+import java.util.UUID;
 
 @Entity
 @Table(name = "offers")
-public class OfferEntity extends BaseEntity{
+public class OfferEntity extends BaseEntity {
+
+    @JdbcTypeCode(Types.VARCHAR)
+    private UUID uuid;
 
     @ManyToOne
     private ModelEntity model;
@@ -98,6 +104,15 @@ public class OfferEntity extends BaseEntity{
 
     public OfferEntity setYear(int year) {
         this.year = year;
+        return this;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public OfferEntity setUuid(UUID uuid) {
+        this.uuid = uuid;
         return this;
     }
 }
