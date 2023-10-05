@@ -12,7 +12,7 @@ spring:
   #always on first run
   sql:
     init:
-      mode: always
+      mode: never
   mvc:
     hiddenmethod:
       filter:

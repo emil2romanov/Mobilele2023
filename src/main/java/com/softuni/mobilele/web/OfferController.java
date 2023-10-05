@@ -3,6 +3,7 @@ package com.softuni.mobilele.web;
 import com.softuni.mobilele.model.dto.CreateOfferDTO;
 import com.softuni.mobilele.model.enums.EngineEnum;
 import com.softuni.mobilele.model.enums.TransmissionEnum;
+import com.softuni.mobilele.service.BrandService;
 import com.softuni.mobilele.service.OfferService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +16,12 @@ import java.util.UUID;
 public class OfferController {
 
     private final OfferService offerService;
+    private final BrandService brandService;
 
-    public OfferController(OfferService offerService) {
+    public OfferController(OfferService offerService,
+                           BrandService brandService) {
         this.offerService = offerService;
+        this.brandService = brandService;
     }
 
     @GetMapping("/all")
@@ -37,11 +41,15 @@ public class OfferController {
 
     @GetMapping("/add")
     public String add(Model model) {
+
+        model.addAttribute("brands", brandService.getAllBrands());
+
         return "offer-add";
     }
 
     @PostMapping
     public String add(CreateOfferDTO createOfferDTO) {
+
         offerService.createOffer(createOfferDTO);
 
         return "index";
