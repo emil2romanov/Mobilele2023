@@ -6,10 +6,16 @@ spring:
     password: 1234
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
+    defer-datasource-initialization: true
     hibernate:
       ddl-auto: update
+  #always on first run
   sql:
     init:
-      mode: never
+      mode: always
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
 
 default.admin.pass: ${DEFAULT_ADMIN_PASS:topsecret}
