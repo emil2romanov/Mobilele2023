@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/offers")
+@RequestMapping("/offer")
 public class OfferController {
 
     private final OfferService offerService;
@@ -22,11 +22,6 @@ public class OfferController {
                            BrandService brandService) {
         this.offerService = offerService;
         this.brandService = brandService;
-    }
-
-    @GetMapping("/all")
-    public String all() {
-        return "offers";
     }
 
     @ModelAttribute("engines")
