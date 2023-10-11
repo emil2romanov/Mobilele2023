@@ -2,14 +2,14 @@ spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/mobilele?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
-    username: root
-    password: 1234
+    username: ${db_username}
+    password: ${db_password}
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: update
-  #always on first run
+  # should be 'always' when running for the first time
   sql:
     init:
       mode: never

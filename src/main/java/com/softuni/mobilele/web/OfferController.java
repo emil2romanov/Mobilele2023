@@ -5,8 +5,10 @@ import com.softuni.mobilele.model.enums.EngineEnum;
 import com.softuni.mobilele.model.enums.TransmissionEnum;
 import com.softuni.mobilele.service.BrandService;
 import com.softuni.mobilele.service.OfferService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -37,13 +39,18 @@ public class OfferController {
     @GetMapping("/add")
     public String add(Model model) {
 
+        if (model.containsAttribute("createOfferDTO")) {
+            model.addAttribute("createOfferDTO", new CreateOfferDTO());
+        }
+
         model.addAttribute("brands", brandService.getAllBrands());
 
         return "offer-add";
     }
 
-    @PostMapping
-    public String add(CreateOfferDTO createOfferDTO) {
+    @PostMapping("/add")
+    public String add(@Valid CreateOfferDTO createOfferDTO,
+                      BindingResult bindingResult) {
 
         offerService.createOffer(createOfferDTO);
 
