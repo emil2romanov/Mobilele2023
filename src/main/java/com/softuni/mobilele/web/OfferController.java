@@ -61,12 +61,12 @@ public class OfferController {
             return "redirect:/offer/add";
         }
 
-        offerService.createOffer(createOfferDTO);
+        UUID newOfferUUID = offerService.createOffer(createOfferDTO);
 
-        return "index";
+        return "redirect:/offer/" + newOfferUUID;
     }
 
-    @GetMapping("/{uuid}/details")
+    @GetMapping("/{uuid}")
     public String details(@PathVariable("uuid") UUID uuid) {
         return "details";
     }
