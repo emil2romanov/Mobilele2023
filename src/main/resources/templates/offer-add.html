@@ -28,11 +28,17 @@
                         class="form-control">
                     <option value="">- Select a model -</option>
                     <optgroup
-                            th:each="model : ${brand.models()}"
-                            th:text="${model.name}"
-                            th:value="${model.id}"
-                            th:selected="*{modelId} == ${model.id}">
-                        Model
+                            th:each="brand: ${brands}"
+                            th:label="${brand.name()}">
+
+                        <option
+                                th:each="model : ${brand.models()}"
+                                th:text="${model.name}"
+                                th:value="${model.id}"
+                                th:selected="*{modelId} == ${model.id}">
+                            Model
+                        </option>
+
                     </optgroup>
                 </select>
                 <p class="invalid-feedback errors alert alert-danger">
