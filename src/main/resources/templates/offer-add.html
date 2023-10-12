@@ -13,7 +13,9 @@
 
 <div class="container">
     <h2 class="text-center text-white">Upload Offer</h2>
-    <form method="POST" 
+    <form th:method="POST"
+          th:action="@{/offer/add}"
+          th:object="${createOfferDTO}"
           class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
         <div class="row">
 
@@ -36,11 +38,13 @@
             <div class="form-group col-md-6 mb-3">
                 <label for="price" class="text-white font-weight-bold">Price</label>
                 <input id="price"
-                       name="price"
+                       th:name="price"
+                       th:field="*{price}"
+                       th:errorclass="is-invalid"
                        type="number"
                        class="form-control"
                        placeholder="Suggested price"/>
-                <p  class="errors alert alert-danger">
+                <p  class="invalid-feedback errors alert alert-danger">
                     Suggested price is required.
                 </p>
             </div>
