@@ -2,6 +2,7 @@ package com.softuni.mobilele.model.dto;
 
 import com.softuni.mobilele.model.enums.EngineEnum;
 import com.softuni.mobilele.model.enums.TransmissionEnum;
+import com.softuni.mobilele.model.validation.YearNotInTheFuture;
 import jakarta.validation.constraints.*;
 
 public record CreateOfferDTO(
@@ -10,7 +11,7 @@ public record CreateOfferDTO(
         @NotNull TransmissionEnum transmission, @NotEmpty String imageUrl,
         @Positive @NotNull Integer mileage,
         @Positive @NotNull Integer price,
-        //@YearNotInTheFuture(message = "The year should not be in the future!")
+        @YearNotInTheFuture(message = "The year should not be in the future!")
         @NotNull(message = "Year must be provided!")
         @Min(1930)
         Integer year) {

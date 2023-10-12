@@ -20,8 +20,10 @@ public class OfferEntity extends BaseEntity{
     @NotNull
     @JdbcTypeCode(Types.VARCHAR)
     private UUID uuid;
+
     @NotEmpty
     private String description;
+
     @NotNull
     @ManyToOne
     private ModelEntity model;
@@ -29,6 +31,7 @@ public class OfferEntity extends BaseEntity{
     @NotNull
     @Enumerated(EnumType.STRING)
     private EngineEnum engine;
+
     @NotNull
     @Enumerated(EnumType.STRING)
     private TransmissionEnum transmission;
