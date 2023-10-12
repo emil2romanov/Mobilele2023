@@ -4,7 +4,7 @@ import com.softuni.mobilele.model.enums.ModelCategoryEnum;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "models")
+@Table(name="models")
 public class ModelEntity extends BaseEntity {
 
     private String name;
@@ -40,5 +40,14 @@ public class ModelEntity extends BaseEntity {
     public ModelEntity setBrand(BrandEntity brand) {
         this.brand = brand;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "ModelEntity{" +
+                "name='" + name + '\'' +
+                ", category=" + category +
+                ", brand=" + brand +
+                '}';
     }
 }

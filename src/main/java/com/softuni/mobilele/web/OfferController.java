@@ -41,7 +41,7 @@ public class OfferController {
     public String add(Model model) {
 
         if (!model.containsAttribute("createOfferDTO")) {
-            model.addAttribute("createOfferDTO", new CreateOfferDTO());
+            model.addAttribute("createOfferDTO", CreateOfferDTO.empty());
         }
 
         model.addAttribute("brands", brandService.getAllBrands());
