@@ -13,6 +13,17 @@ public class OpenExchangeRateConfig {
     private List<String> symbols;
     private String host;
     private String schema;
+    private String path;
+    private boolean enabled;
+
+    public String getPath() {
+        return path;
+    }
+
+    public OpenExchangeRateConfig setPath(String path) {
+        this.path = path;
+        return this;
+    }
 
     public String getAppId() {
         return appId;
@@ -25,6 +36,15 @@ public class OpenExchangeRateConfig {
 
     public List<String> getSymbols() {
         return symbols;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public OpenExchangeRateConfig setEnabled(boolean enabled) {
+        this.enabled = enabled;
+        return this;
     }
 
     public OpenExchangeRateConfig setSymbols(List<String> symbols) {
@@ -57,6 +77,8 @@ public class OpenExchangeRateConfig {
                 ", symbols=" + symbols +
                 ", host='" + host + '\'' +
                 ", schema='" + schema + '\'' +
+                ", path='" + path + '\'' +
+                ", enabled=" + enabled +
                 '}';
     }
 }
