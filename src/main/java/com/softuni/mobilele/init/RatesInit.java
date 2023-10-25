@@ -46,9 +46,9 @@ public class RatesInit implements CommandLineRunner {
                             requestParams
                     );
 
-            /*System.out.println("----- RECEIVED FROM OPEN EXCHANGE RATES -----");
+            System.out.println("----- RECEIVED FROM OPEN EXCHANGE RATES -----");
             System.out.println(exchangeRatesDTO);
-            System.out.println("----- RECEIVED FROM OPEN EXCHANGE RATES -----");*/
+            System.out.println("----- RECEIVED FROM OPEN EXCHANGE RATES -----");
 
             currencyService.refreshRates(exchangeRatesDTO);
         }
