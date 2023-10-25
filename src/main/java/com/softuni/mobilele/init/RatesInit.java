@@ -14,7 +14,6 @@ public class RatesInit implements CommandLineRunner {
 
     private final RestTemplate restTemplate;
     private final OpenExchangeRateConfig openExchangeRateConfig;
-
     private final CurrencyService currencyService;
 
     public RatesInit(
@@ -46,6 +45,10 @@ public class RatesInit implements CommandLineRunner {
                             ExchangeRatesDTO.class,
                             requestParams
                     );
+
+            /*System.out.println("----- RECEIVED FROM OPEN EXCHANGE RATES -----");
+            System.out.println(exchangeRatesDTO);
+            System.out.println("----- RECEIVED FROM OPEN EXCHANGE RATES -----");*/
 
             currencyService.refreshRates(exchangeRatesDTO);
         }
