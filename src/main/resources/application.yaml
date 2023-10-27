@@ -12,7 +12,7 @@ spring:
   # should be 'always' when running for the first time
   sql:
     init:
-      mode: never
+      mode: always
   mvc:
     hiddenmethod:
       filter:
@@ -21,6 +21,7 @@ logging:
   level:
     org.hibernate.SQL: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
+    org.springframework.security: TRACE
 default.admin.pass: ${DEFAULT_ADMIN_PASS:topsecret}
 
 open.exchange.rates:

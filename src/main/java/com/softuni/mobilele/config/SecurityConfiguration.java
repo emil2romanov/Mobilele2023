@@ -16,13 +16,14 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeHttpRequests(
+        return httpSecurity.authorizeHttpRequests(
                 // Define which urls are visible by which users
                 authorizeRequests -> authorizeRequests
                         // All resources which are situated in js, img, css are available for anyone
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         // Allow anyone to see the home page, the registration page and the login form
-                        .requestMatchers("/", "/users/login", "users/register").permitAll()
+                        .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
+                        .requestMatchers("/offers/all").permitAll()
                         // All other requests are authenticated
                         .anyRequest().authenticated()
         ).formLogin(
@@ -47,11 +48,7 @@ public class SecurityConfiguration {
                             // Invalidate the HTTP session
                             .invalidateHttpSession(true);
                 }
-        );
-
-        // TODO: remember me!
-
-        return httpSecurity.build();
+        ).build();
     }
 
     @Bean
