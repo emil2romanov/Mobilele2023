@@ -27,10 +27,12 @@ public class MobileleUserDetailsService implements UserDetailsService {
     }
 
     private UserDetails map(UserEntity userEntity) {
-        return User
+        UserDetails userDetails = User
                 .withUsername(userEntity.getEmail())
                 .password(userEntity.getPassword())
                 .authorities(List.of()) // TODO - add roles
                 .build();
+
+        return userDetails;
     }
 }

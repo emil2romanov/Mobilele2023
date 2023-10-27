@@ -56,6 +56,8 @@ public class SecurityConfiguration {
 
     @Bean
     public UserDetailsService userDetailsService(UserRepository userRepository) {
+        // This service translates between the mobilele users and roles
+        // to represent which spring security understands
         return new MobileleUserDetailsService(userRepository);
     }
 
