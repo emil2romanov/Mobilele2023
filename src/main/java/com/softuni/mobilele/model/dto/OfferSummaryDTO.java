@@ -14,4 +14,7 @@ public record OfferSummaryDTO (
         EngineEnum engine,
         TransmissionEnum transmission
 ) {
+    String summary() {
+        return brand + " " + model + ", " + year;
+    }
 }
