@@ -80,7 +80,7 @@ public class OfferController {
         return "details";
     }
 
-    @DeleteMapping("/uuid")
+    @DeleteMapping("/{uuid}")
     public String delete(@PathVariable("uuid") UUID uuid) {
 
         offerService.deleteOffer(uuid);

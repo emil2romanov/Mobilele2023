@@ -9,6 +9,7 @@ import com.softuni.mobilele.repository.ModelRepository;
 import com.softuni.mobilele.repository.OfferRepository;
 import com.softuni.mobilele.service.OfferService;
 import com.softuni.mobilele.service.exception.ObjectNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -57,6 +58,7 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
+    @Transactional
     public void deleteOffer(UUID offerUUID) {
         offerRepository.deleteByUuid(offerUUID);
     }
