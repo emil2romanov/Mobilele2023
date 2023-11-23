@@ -68,6 +68,9 @@ public class OfferController {
 
     @GetMapping("/{uuid}")
     public String details(@PathVariable("uuid") UUID uuid) {
+
+
+
         return "details";
     }
 }

@@ -48,13 +48,15 @@ public class OfferServiceImpl implements OfferService {
 
     private static OfferSummaryDTO mapAsSummary(OfferEntity offerEntity) {
         return new OfferSummaryDTO(
+                offerEntity.getUuid().toString(),
                 offerEntity.getModel().getBrand().getName(),
                 offerEntity.getModel().getName(),
                 offerEntity.getYear(),
                 offerEntity.getMileage(),
                 offerEntity.getPrice(),
                 offerEntity.getEngine(),
-                offerEntity.getTransmission());
+                offerEntity.getTransmission(),
+                offerEntity.getImageUrl());
     }
 
     private static OfferEntity map(CreateOfferDTO createOfferDTO) {
