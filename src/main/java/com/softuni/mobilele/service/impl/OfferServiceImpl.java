@@ -56,6 +56,11 @@ public class OfferServiceImpl implements OfferService {
                 .map(OfferServiceImpl::mapAsDetails);
     }
 
+    @Override
+    public void deleteOffer(UUID offerUUID) {
+        offerRepository.deleteByUuid(offerUUID);
+    }
+
     private static OfferDetailDTO mapAsDetails(OfferEntity offerEntity) {
         //TODO: reuse
         return new OfferDetailDTO(

@@ -79,4 +79,12 @@ public class OfferController {
 
         return "details";
     }
+
+    @DeleteMapping("/uuid")
+    public String delete(@PathVariable("uuid") UUID uuid) {
+
+        offerService.deleteOffer(uuid);
+
+        return "redirect:/offers/all";
+    }
 }
