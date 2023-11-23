@@ -1,17 +1,20 @@
 package com.softuni.mobilele.service.impl;
 
 import com.softuni.mobilele.model.dto.CreateOfferDTO;
+import com.softuni.mobilele.model.dto.OfferDetailDTO;
 import com.softuni.mobilele.model.dto.OfferSummaryDTO;
 import com.softuni.mobilele.model.entity.ModelEntity;
 import com.softuni.mobilele.model.entity.OfferEntity;
 import com.softuni.mobilele.repository.ModelRepository;
 import com.softuni.mobilele.repository.OfferRepository;
 import com.softuni.mobilele.service.OfferService;
+import com.softuni.mobilele.service.exception.ObjectNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -44,6 +47,27 @@ public class OfferServiceImpl implements OfferService {
         return offerRepository
                 .findAll(pageable)
                 .map(OfferServiceImpl::mapAsSummary);
+    }
+
+    @Override
+    public Optional<OfferDetailDTO> getOfferDetail(UUID offerUUID) {
+        return offerRepository
+                .findByUuid(offerUUID)
+                .map(OfferServiceImpl::mapAsDetails);
+    }
+
+    private static OfferDetailDTO mapAsDetails(OfferEntity offerEntity) {
+        //TODO: reuse
+        return new OfferDetailDTO(
+                offerEntity.getUuid().toString(),
+                offerEntity.getModel().getBrand().getName(),
+                offerEntity.getModel().getName(),
+                offerEntity.getYear(),
+                offerEntity.getMileage(),
+                offerEntity.getPrice(),
+                offerEntity.getEngine(),
+                offerEntity.getTransmission(),
+                offerEntity.getImageUrl());
     }
 
     private static OfferSummaryDTO mapAsSummary(OfferEntity offerEntity) {
