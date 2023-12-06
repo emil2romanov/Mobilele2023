@@ -50,6 +50,6 @@ public class EmailServiceImpl implements EmailService {
         Context context = new Context();
         context.setVariable("username", userName);
 
-        return templateEngine.process("email/registration-email.html", context);
+        return templateEngine.process("email/registration-email", context);
     }
 }
